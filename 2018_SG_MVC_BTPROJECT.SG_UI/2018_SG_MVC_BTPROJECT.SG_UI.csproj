@@ -6256,6 +6256,16 @@
     <Compile Include="Areas\AdminPanel\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\AdminLoginController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\BaseController.cs" />
+    <Compile Include="Areas\AdminPanel\Models\AdminDTO\BaseVM.cs" />
+    <Compile Include="Areas\AdminPanel\Models\AdminDTO\CategoryVM.cs" />
+    <Compile Include="Areas\AdminPanel\Models\AdminDTO\PictureVM.cs" />
+    <Compile Include="Areas\AdminPanel\Models\AdminDTO\SiteInfoVM.cs" />
+    <Compile Include="Areas\AdminPanel\Models\AdminDTO\SliderVM.cs" />
+    <Compile Include="Areas\AdminPanel\Models\AdminDTO\UserVM.cs" />
+    <Compile Include="Areas\AdminPanel\Models\Attributes\UserLoginControl.cs" />
+    <Compile Include="Areas\AdminPanel\Models\Types\Enums\EnumIslemDurum.cs" />
+    <Compile Include="Areas\AdminPanel\Models\Types\Messages\FormMessages.cs" />
+    <Compile Include="Areas\AdminPanel\Models\Types\Messages\UserMessages.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -8508,7 +8518,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AdminPanel\Models\" />
+    <Folder Include="Areas\AdminPanel\Models\Services\" />
     <Folder Include="Areas\AdminPanel\Views\Base\" />
     <Folder Include="Areas\AdminPanel\Views\Home\" />
     <Folder Include="Models\" />
