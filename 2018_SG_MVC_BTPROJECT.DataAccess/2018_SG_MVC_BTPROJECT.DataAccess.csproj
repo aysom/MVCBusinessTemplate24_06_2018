@@ -70,23 +70,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\ICategoryDal.cs" />
-    <Compile Include="Abstract\ILoginDal.cs" />
-    <Compile Include="Abstract\IPictureDal.cs" />
-    <Compile Include="Abstract\ISiteInfoDal.cs" />
-    <Compile Include="Abstract\ISliderDal.cs" />
-    <Compile Include="Abstract\IUserDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EFCategoryDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EFLoginDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EFPictureDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EFSiteInfoDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EFSliderDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EFUserDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Concrete\NHibernate\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -95,10 +81,6 @@
     <ProjectReference Include="..\2018_SG_MVC_BTPROJECT.Entities\2018_SG_MVC_BTPROJECT.Entities.csproj">
       <Project>{5855943d-f9a0-4cab-873b-927af2c8b613}</Project>
       <Name>2018_SG_MVC_BTPROJECT.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\2018_SG_MVC_BTPROJECT.Infrastructure\2018_SG_MVC_BTPROJECT.Infrastructure.csproj">
-      <Project>{41696e41-df30-465f-8fe2-71011a6da822}</Project>
-      <Name>2018_SG_MVC_BTPROJECT.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

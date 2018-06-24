@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "CategoryDetail";
+    Layout = "~/Areas/AdminPanel/Views/Shared/AdminLayout.cshtml";
+}
+
+
+ 
+
+<div class="white-box">
+    @*<h3 class="box-title">KATEGORİ DÜZENLE</h3>*@ 
+    @using (Html.BeginForm("CategoryDetail", "AdminCategory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.Partial("Partial/CategoryForm")
+    }
+</div> 

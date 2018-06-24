@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _2018_SG_MVC_BTPROJECT.Business.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,8 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+            
         }
     }
 }

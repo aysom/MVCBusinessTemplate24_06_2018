@@ -1,7 +1,6 @@
 ﻿using _2018_SG_MVC_BTPROJECT.Business.Abstract;
-using _2018_SG_MVC_BTPROJECT.DataAccess.Abstract;
+
 using _2018_SG_MVC_BTPROJECT.Entities;
- 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,23 +11,21 @@ namespace _2018_SG_MVC_BTPROJECT.Business.Concrete
 {
     public class LoginService:ILoginService
     {
-        private ILoginDal _LoginDal;
-
-        public LoginService(ILoginDal loginDal)
-        {
-            _LoginDal = loginDal;
-        }
+        private _2018_SG_MVC_BTPROJECT.Business.UnitOfWork.UnitOfWork _uow = null;
          
+        public LoginService()
+        {
+           _uow = new _2018_SG_MVC_BTPROJECT.Business.UnitOfWork.UnitOfWork();
+        }
+     
+
         public bool LoginOlduMu(User gelenuser)
         {
-            if (_LoginDal.LoginControl(gelenuser))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+            bool logincontrol = _uow.GetRepository<User>().Any(x => x.Email == gelenuser.Email && x.Password == gelenuser.Password);
+            return logincontrol;
+        } 
+
+
+         
     }
 }

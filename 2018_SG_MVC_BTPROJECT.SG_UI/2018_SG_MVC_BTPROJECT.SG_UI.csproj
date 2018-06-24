@@ -44,7 +44,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -6248,11 +6257,13 @@
     <Content Include="Areas\AdminPanel\main\widget-charts.html" />
     <Content Include="Areas\AdminPanel\main\widget-data.html" />
     <Content Include="Global.asax" />
+    <Content Include="Upload\Category\OrjPath\default.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminPanel\AdminPanelAreaRegistration.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\AdminCategoryController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\AdminLoginController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\BaseController.cs" />
@@ -6270,6 +6281,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -8506,6 +8518,10 @@
     <Content Include="Areas\AdminPanel\main\scss\widgets.scss" />
     <Content Include="Areas\AdminPanel\Views\AdminHome\Index.cshtml" />
     <Content Include="Areas\AdminPanel\Views\AdminLogin\Index.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminCategory\Partial\CategoryForm.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminCategory\InsertCategory.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminCategory\Index.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminCategory\CategoryDetail.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -8528,17 +8544,9 @@
       <Project>{aa1b0ddf-99e1-4ef0-850d-85d6e355256d}</Project>
       <Name>2018_SG_MVC_BTPROJECT.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\2018_SG_MVC_BTPROJECT.DataAccess\2018_SG_MVC_BTPROJECT.DataAccess.csproj">
-      <Project>{ef72357f-573d-45e3-8274-a049a9470bef}</Project>
-      <Name>2018_SG_MVC_BTPROJECT.DataAccess</Name>
-    </ProjectReference>
     <ProjectReference Include="..\2018_SG_MVC_BTPROJECT.Entities\2018_SG_MVC_BTPROJECT.Entities.csproj">
       <Project>{5855943d-f9a0-4cab-873b-927af2c8b613}</Project>
       <Name>2018_SG_MVC_BTPROJECT.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\2018_SG_MVC_BTPROJECT.Infrastructure\2018_SG_MVC_BTPROJECT.Infrastructure.csproj">
-      <Project>{41696e41-df30-465f-8fe2-71011a6da822}</Project>
-      <Name>2018_SG_MVC_BTPROJECT.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

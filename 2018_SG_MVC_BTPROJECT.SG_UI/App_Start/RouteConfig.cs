@@ -16,7 +16,7 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                defaults: new { controller = "AdminLogin", action = "Index", id = UrlParameter.Optional },
                 namespaces: new string[] { "2018_SG_MVC_BTPROJECT.SG_UI.Controllers" }
             );
 

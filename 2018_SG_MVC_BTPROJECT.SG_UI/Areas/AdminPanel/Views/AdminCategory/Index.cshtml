@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/AdminLayout.cshtml";
+}
+
+@model List<_2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Models.AdminDTO.CategoryVM>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">TÜM KATEGORİLER</h4>
+                <h6 class="card-subtitle"></h6>
+                <div class="table-responsive">
+                    <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>RESİM</th>
+                                <th>KATEGORİ ADI</th>
+                                <th>ÜST KATEGORİ ADI</th> 
+                                <th>AÇIKLAMA</th>
+                                <th class="text-nowrap">DÜZENLE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+
+                                    <td>
+                                        <a href="javascript:void(0)">
+                                            <img src="~/Upload/Category/OrjPath/@item.CatImage" alt="user" width="40" class="img-circle" /> 
+                                        </a>
+                                    </td>
+                                    <td>@item.Name</td>
+                                    <td>@item.TopCatName</td>
+                                    <td>@item.Description</td>
+                                    <td class="text-nowrap">
+                                        <a href="/AdminPanel/AdminCategory/CategoryDetail/@item.Id" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a> <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a>
+                                    </td>
+                                </tr>
+                            }
+
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

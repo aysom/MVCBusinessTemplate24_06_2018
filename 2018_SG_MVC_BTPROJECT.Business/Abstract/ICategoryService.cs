@@ -13,7 +13,14 @@ namespace _2018_SG_MVC_BTPROJECT.Business.Abstract
         List<Category> getMainCategories();
         List<Category> getAllSubCategories();
         Category getMainCategory(int id);
-        List<Category> getSubCategoriesById(int mainCatid);
+        //List<Category> getSubCategoriesById(int mainCatid);
         IEnumerable<SelectListItem> getDrpCategories();
+        List<Category> getAllCategories();
+        Category getCategoryDetail(int id);
+
+        //Ozel Metodlar
+        //AdminPanelde İndex
+        //List<Category> getAllCategoriesWithMainCategoryName();
+        Boolean GetByIdBool(int id);
     }
 }

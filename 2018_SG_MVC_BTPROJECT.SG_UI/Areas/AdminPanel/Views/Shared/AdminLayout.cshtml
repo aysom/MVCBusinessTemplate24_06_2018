@@ -10,6 +10,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="~/Areas/AdminPanel/assets/images/favicon.png">
     <title>Admin Press Admin Template - The Ultimate Bootstrap 4 Admin Template</title>
     <link href="~/Areas/AdminPanel/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Areas/AdminPanel/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Areas/AdminPanel/assets/plugins/dropify/dist/css/dropify.min.css" rel="stylesheet" />
 
     <link href="~/Areas/AdminPanel/main/css/style.css" rel="stylesheet" />
     <link href="~/Areas/AdminPanel/main/css/colors/blue.css" rel="stylesheet" />
@@ -35,7 +37,6 @@
                         <b>
 
                             <img src="~/Areas/AdminPanel/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            <img src="~/Areas/AdminPanel/assets/images/logo-icon.png" />
 
                             <img src="~/Areas/AdminPanel/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                         </b>
@@ -307,6 +308,52 @@
 
     <script src="~/Areas/AdminPanel/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 
+    <script src="~/Areas/AdminPanel/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="~/Areas/AdminPanel/assets/plugins/dropify/dist/js/dropify.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Basic
+            $('.dropify').dropify();
+
+            // Translated
+            $('.dropify-fr').dropify({
+                messages: {
+                    default: 'Glissez-déposez un fichier ici ou cliquez',
+                    replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                    remove: 'Supprimer',
+                    error: 'Désolé, le fichier trop volumineux',
+                    defaultFile: nameImage,
+                }
+            });
+
+            // Used events
+            var drEvent = $('#input-file-events').dropify();
+
+            drEvent.on('dropify.beforeClear', function (event, element) {
+                return confirm("Silmek istediğinizden emin misiniz? \"" + element.file.name + "\" ?");
+            });
+
+            drEvent.on('dropify.afterClear', function (event, element) {
+                alert('Dosya Silindi');
+            });
+
+            drEvent.on('dropify.errors', function (event, element) {
+                console.log('Has Errors');
+            });
+
+            var drDestroy = $('#input-file-to-destroy').dropify();
+            drDestroy = drDestroy.data('dropify')
+            $('#toggleDropify').on('click', function (e) {
+                e.preventDefault();
+                if (drDestroy.isDropified()) {
+                    drDestroy.destroy();
+                } else {
+                    drDestroy.init();
+                }
+            })
+        });
+    </script>
 
 </body>
 

@@ -1,4 +1,5 @@
-﻿using _2018_SG_MVC_BTPROJECT.Infrastructure.UnitOfWork;
+﻿
+using _2018_SG_MVC_BTPROJECT.Business.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Controllers
 {
     public class BaseController : Controller
     {
-        public IUnitOfWork uow = null;
+        //public UnitOfWork _uow = null;
 
-        public BaseController()
-        {
-            uow = new UnitOfWork();
-        }
+        //public BaseController()
+        //{
+        //    _uow = new UnitOfWork();
+        //}
     }
 }
