@@ -10,7 +10,7 @@ using _2018_SG_MVC_BTPROJECT.Entities.Context;
 
 namespace _2018_SG_MVC_BTPROJECT.Business.UnitOfWork
 {
-    public class UnitOfWork 
+    public class UnitOfWork:IUnitOfWork
     {
         private BTContext _context;
         public BTContext Context { get => _context; set => _context = value; }
@@ -19,7 +19,7 @@ namespace _2018_SG_MVC_BTPROJECT.Business.UnitOfWork
         {
             _context = new BTContext();
         }
-         
+        
         private Dictionary<Type, object> repositories = new Dictionary<Type, object>();
         public IRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity
         {
@@ -37,5 +37,8 @@ namespace _2018_SG_MVC_BTPROJECT.Business.UnitOfWork
             var result = _context.SaveChanges();
             return result;
         }
+
+        
+
     }
 }

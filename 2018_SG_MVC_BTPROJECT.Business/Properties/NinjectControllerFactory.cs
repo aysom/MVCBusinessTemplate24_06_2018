@@ -1,5 +1,6 @@
 ﻿using _2018_SG_MVC_BTPROJECT.Business.Abstract;
 using _2018_SG_MVC_BTPROJECT.Business.Concrete;
+using _2018_SG_MVC_BTPROJECT.Business.UnitOfWork;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -23,8 +24,10 @@ namespace _2018_SG_MVC_BTPROJECT.Business.Properties
 
         private void AddBllBindings()
         {
+            _ninjectKernel.Bind<IUnitOfWork>().To<UnitOfWork.UnitOfWork>();
             _ninjectKernel.Bind<ILoginService>().To<LoginService>();
             _ninjectKernel.Bind<ICategoryService>().To<CategoryService>();
+            
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)

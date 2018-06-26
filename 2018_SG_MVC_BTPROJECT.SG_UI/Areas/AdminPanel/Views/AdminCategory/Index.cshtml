@@ -10,7 +10,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">TÜM KATEGORİLER</h4>
+                @*<h4 class="card-title">TÜM KATEGORİLER</h4>*@
                 <h6 class="card-subtitle"></h6>
                 <div class="table-responsive">
                     <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10">
@@ -19,36 +19,73 @@
                                 <th>ID</th>
                                 <th>RESİM</th>
                                 <th>KATEGORİ ADI</th>
-                                <th>ÜST KATEGORİ ADI</th> 
+                                <th>ÜST KATEGORİ ADI</th>
                                 <th>AÇIKLAMA</th>
                                 <th class="text-nowrap">DÜZENLE</th>
                             </tr>
                         </thead>
                         <tbody>
-
                             @foreach (var item in Model)
                             {
                                 <tr>
                                     <td>@item.Id</td>
-
                                     <td>
                                         <a href="javascript:void(0)">
-                                            <img src="~/Upload/Category/OrjPath/@item.CatImage" alt="user" width="40" class="img-circle" /> 
+                                            <img src="~/Upload/Category/OrjPath/@item.CatImage" alt="user" width="40" class="img-circle" />
                                         </a>
                                     </td>
                                     <td>@item.Name</td>
                                     <td>@item.TopCatName</td>
                                     <td>@item.Description</td>
                                     <td class="text-nowrap">
-                                        <a href="/AdminPanel/AdminCategory/CategoryDetail/@item.Id" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a> <a href="#" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a>
-                                    </td>
+                                        <a href="/AdminPanel/AdminCategory/CategoryDetail/@item.Id" data-toggle="tooltip" data-original-title="Edit">
+                                            <i class="fa fa-pencil text-inverse m-r-10"></i>
+                                        </a>
+
+                                        <a href="/AdminPanel/AdminCategory/DeleteCategory/@item.Id" data-toggle="modal" data-target="#add-contact" data-original-title="Close">
+                                            <i class="fa fa-close text-danger"></i>
+                                        </a>
+                                        @using (Html.BeginForm("DeleteCategory", "AdminCategory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                            <h4 class="modal-title" id="myModalLabel">Add New Contact</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <from class="form-horizontal form-material">
+                                                                <div class="form-group">
+                                                                    <label>Silmek istediğinizden emin misiniz?</label>
+                                                                </div>
+                                                            </from>
+                                                        </div>
+                                                        <div class="modal-footer">
+
+                                                            <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">SİL</button>
+
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+
+                                        }
+                                        </td>
                                 </tr>
                             }
-
-
-
                         </tbody>
-
+                        <tfoot>
+                            <tr>
+                                <td colspan="7">
+                                    <div class="text-right">
+                                        <ul class="pagination"> </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -58,3 +95,5 @@
 
     </div>
 </div>
+
+

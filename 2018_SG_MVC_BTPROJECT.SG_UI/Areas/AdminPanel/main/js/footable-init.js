@@ -64,7 +64,10 @@ $(window).on('load', function() {
 		var row = $(this).parents('tr:first');
 
 		//delete the row
-		footable.removeRow(row);
+        if (confirm('Are you sure you want to delete the row?')) {
+            footable.removeRow(row);
+        }
+	 
 	});
     var addrow = $('#demo-foo-addrow2');
 	addrow.footable().on('click', '.delete-row-btn', function() {
@@ -77,7 +80,8 @@ $(window).on('load', function() {
 
 		//delete the row
 		footable.removeRow(row);
-	});
+    });
+
 	// Add Row Button
 	$('#demo-btn-addrow').click(function() {
 
@@ -88,6 +92,11 @@ $(window).on('load', function() {
 		var newRow = '<tr><td>thome</td><td>Woldt</td><td>Airline Transport Pilot</td><td>3 Oct 2016</td><td><span class="label label-table label-success">Active</span></td><td><button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button></td></tr>';
 
 		//add it
-		footable.appendRow(newRow);
-	});
+        footable.appendRow(newRow);
+       
+    });
+
+
+
+
 });

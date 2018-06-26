@@ -12,7 +12,7 @@ namespace _2018_SG_MVC_BTPROJECT.Entities.Context
     {
         public BTContext()
         {
-            Database.Connection.ConnectionString = @"server=AYSENUR\SQLEXPRESS;database=SG_BTDBV2;Integrated Security=SSPI";
+            Database.Connection.ConnectionString = @"server=AYSENURPC\SQLEXPRESS;database=SG_BTDBV2;Integrated Security=SSPI";
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -26,5 +26,7 @@ namespace _2018_SG_MVC_BTPROJECT.Entities.Context
         public DbSet<SiteInfo> SiteInfos { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Slider> Sliders { get; set; }
+
+     
     }
 }

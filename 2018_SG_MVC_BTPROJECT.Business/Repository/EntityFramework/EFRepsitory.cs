@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 namespace _2018_SG_MVC_BTPROJECT.Business.Repository.EntityFramework
 {
     public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
-
     {
 
         private BTContext _context;
@@ -48,10 +47,7 @@ namespace _2018_SG_MVC_BTPROJECT.Business.Repository.EntityFramework
         {
             _context.Set<TEntity>().Remove(entity);
         }
-        public int SaveChanges()
-        {
-            return _context.SaveChanges();
-        }
+         
 
         public TEntity GetById(int id)
         {
@@ -83,6 +79,11 @@ namespace _2018_SG_MVC_BTPROJECT.Business.Repository.EntityFramework
             return _context.Set<TEntity>().Where(x => x.IsDeleted == false).Any(lambda);
         }
 
+        public int SaveChanges()
+        {
+               int a = _context.SaveChanges();
+                return a; 
+        }
     }
 
 }

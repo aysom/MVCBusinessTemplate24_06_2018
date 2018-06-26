@@ -1,4 +1,5 @@
 ﻿using _2018_SG_MVC_BTPROJECT.Business.Abstract;
+using _2018_SG_MVC_BTPROJECT.Business.UnitOfWork;
 using _2018_SG_MVC_BTPROJECT.Business.Upload;
 using _2018_SG_MVC_BTPROJECT.Entities;
 using _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Models.AdminDTO;
@@ -12,14 +13,16 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Controllers
 {
     public class AdminCategoryController : Controller
     {
-
+        
         private ICategoryService _CategoryService;
+        private IUnitOfWork _UnitOfWork;
 
-        public AdminCategoryController(ICategoryService categoryService)
+        public AdminCategoryController(ICategoryService categoryService,IUnitOfWork unitOfWork)
         {
             _CategoryService = categoryService;
+            _UnitOfWork = unitOfWork;
         }
-
+      
         // GET: AdminPanel/AdminCategory
         public ActionResult Index()
         {
@@ -61,8 +64,7 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Controllers
 
         [HttpGet]
         public ActionResult CategoryDetail(int id)
-        {
-
+        { 
             Category gelenCat = _CategoryService.getCategoryDetail(id);
             CategoryVM gosterilen = new CategoryVM();
             gosterilen.Id = gelenCat.Id;
@@ -88,38 +90,30 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Controllers
         [HttpPost]
         public ActionResult InsertCategory(CategoryVM gelenCategory, HttpPostedFileBase resim)
         {
-            string OrgimagePath = "~/CategoryImages/OrjPath";
-            string SmallimagePath = "~/CategoryImages/SmallPath";
-            string LargeimagePath = "~/CategoryImages/LargePath";
+            string OrgimagePath = "~/Upload/Category/OrjPath";
+            string SmallimagePath = "~/Upload/Category/SmallPath";
+            string LargeimagePath = "~/Upload/Category/LargePath";
             string uniqFileName = "";
             ImageUploadService svc = ImageUploadService.CreateService(resim);
             uniqFileName = svc.CreateUniqName(resim.FileName, OrgimagePath);
-
-
+            
             CategoryVM vmodel = new CategoryVM(); 
-            vmodel.drpcategories = _CategoryService.getDrpCategories();
-
-            Category eklenecek = new Category();
-
+            vmodel.drpcategories = _CategoryService.getDrpCategories(); 
+            Category eklenecek = new Category(); 
             if (gelenCategory.TopCatId == 0)
-            {
-
+            { 
                 if (resim != null)
-                {
-
+                { 
                     svc.Upload(OrgimagePath, SmallimagePath, LargeimagePath, uniqFileName);
-
                 }
                 eklenecek.Name = gelenCategory.Name;
                 eklenecek.Description = gelenCategory.Description;
                 eklenecek.CatImage = uniqFileName;
                 eklenecek.ServiceDescription = gelenCategory.ServiceDescription;
                 eklenecek.TopCatId = 0;
-                //_CategoryService.Insert(eklenecek);
-                //uow.SaveChange();
-                RedirectToAction("Index", "Category");
-                return View();
-
+                _UnitOfWork.GetRepository<Category>().Insert(eklenecek);
+                _UnitOfWork.SaveChanges();
+                return RedirectToAction("Index", "AdminCategory"); 
             }
             else
             { 
@@ -132,20 +126,43 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Controllers
                     eklenecek.Name = gelenCategory.Name;
                     eklenecek.Description = gelenCategory.Description;
                     eklenecek.CatImage = uniqFileName;
-                    eklenecek.ServiceDescription = gelenCategory.ServiceDescription;
-
-                    eklenecek.TopCatId = gelenCategory.TopCatId;
-
-                    //uow.Repository<Category>().Insert(eklenecek);
-                    //uow.SaveChange();
-                    return View(vmodel);
+                    eklenecek.ServiceDescription = gelenCategory.ServiceDescription; 
+                    eklenecek.TopCatId = gelenCategory.TopCatId; 
+                    _UnitOfWork.GetRepository<Category>().Insert(eklenecek);
+                    _UnitOfWork.SaveChanges();
+                    return RedirectToAction("Index", "AdminCategory");
                 }
                 else
                 {
                     return View(vmodel);
                 }
             }
-             
+
         }
+
+
+        [HttpPost]
+        public ActionResult DeleteCategory(int id)
+        {
+            Category gelenCat = _CategoryService.getCategoryDetail(id);
+            CategoryVM gosterilen = new CategoryVM();
+            gosterilen.Id = gelenCat.Id;
+            gosterilen.Name = gelenCat.Name;
+            gosterilen.ServiceDescription = gelenCat.ServiceDescription;
+            gosterilen.drpcategories = _CategoryService.getAllCategories().Select(cat => new SelectListItem()
+            {
+                Text = cat.Name,
+                Value = cat.Id.ToString()
+            }).ToList();
+            gosterilen.TopCatId = gelenCat.TopCatId;
+            gosterilen.CatImage = gelenCat.CatImage;
+            _UnitOfWork.GetRepository<Category>().Delete(gelenCat);
+            _UnitOfWork.SaveChanges();
+            return RedirectToAction("Index", "AdminCategory");
+        }
+
+
+
+
     }
 }
