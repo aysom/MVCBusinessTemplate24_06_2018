@@ -59,7 +59,7 @@ $(window).on('load', function() {
 
 		//get the footable object
 		var footable = addrow.data('footable');
-
+        
 		//get the row we are wanting to delete
 		var row = $(this).parents('tr:first');
 

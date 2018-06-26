@@ -8522,6 +8522,7 @@
     <Content Include="Areas\AdminPanel\Views\AdminCategory\InsertCategory.cshtml" />
     <Content Include="Areas\AdminPanel\Views\AdminCategory\Index.cshtml" />
     <Content Include="Areas\AdminPanel\Views\AdminCategory\CategoryDetail.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminCategory\DeleteCategory.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />

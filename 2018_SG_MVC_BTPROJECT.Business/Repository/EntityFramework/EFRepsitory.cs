@@ -45,7 +45,13 @@ namespace _2018_SG_MVC_BTPROJECT.Business.Repository.EntityFramework
 
         public void Delete(TEntity entity)
         {
-            _context.Set<TEntity>().Remove(entity);
+             
+            //_context.Set<TEntity>().Remove(entity);
+           // _context.Entry(entity).State = EntityState.Modified;
+
+            var dbEntityEntry = _context.Entry<TEntity>(entity);
+            dbEntityEntry.State = EntityState.Deleted;
+
         }
          
 

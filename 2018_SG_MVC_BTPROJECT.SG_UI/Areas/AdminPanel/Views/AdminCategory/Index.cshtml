@@ -26,67 +26,63 @@
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@item.Id</td>
-                                    <td>
-                                        <a href="javascript:void(0)">
-                                            <img src="~/Upload/Category/OrjPath/@item.CatImage" alt="user" width="40" class="img-circle" />
-                                        </a>
-                                    </td>
-                                    <td>@item.Name</td>
-                                    <td>@item.TopCatName</td>
-                                    <td>@item.Description</td>
-                                    <td class="text-nowrap">
-                                        <a href="/AdminPanel/AdminCategory/CategoryDetail/@item.Id" data-toggle="tooltip" data-original-title="Edit">
-                                            <i class="fa fa-pencil text-inverse m-r-10"></i>
-                                        </a>
+            {
+                <tr>
+                    <td>row_@item.Id</td>
 
-                                        <a href="/AdminPanel/AdminCategory/DeleteCategory/@item.Id" data-toggle="modal" data-target="#add-contact" data-original-title="Close">
-                                            <i class="fa fa-close text-danger"></i>
-                                        </a>
-                                        @using (Html.BeginForm("DeleteCategory", "AdminCategory", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                        {
-                                            <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                            <h4 class="modal-title" id="myModalLabel">Add New Contact</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <from class="form-horizontal form-material">
-                                                                <div class="form-group">
-                                                                    <label>Silmek istediğinizden emin misiniz?</label>
-                                                                </div>
-                                                            </from>
-                                                        </div>
-                                                        <div class="modal-footer">
+                    <td>
+                        <a href="javascript:void(0)">
+                            <img src="~/Upload/Category/OrjPath/@item.CatImage" alt="user" width="40" class="img-circle" />
+                        </a>
+                    </td>
+                    <td>@item.Name</td>
+                    <td>@item.TopCatName</td>
+                    <td>@item.Description</td>
+                    <td class="text-nowrap">
+                        <a href="/AdminPanel/AdminCategory/CategoryDetail/@item.Id" data-toggle="tooltip" data-original-title="Edit">
+                            <i class="fa fa-pencil text-inverse m-r-10"></i>
+                        </a>
 
-                                                            <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">SİL</button>
+                        @*<a href="/AdminPanel/AdminCategory/DeleteCategory/@item.Id" data-toggle="modal" data-target="#add-contact" data-original-title="Delete">
+                <i class="fa fa-close text-danger"></i>
+            </a>*@
 
-                                                        </div>
-                                                    </div>
-                                                    <!-- /.modal-content -->
-                                                </div>
-                                                <!-- /.modal-dialog -->
-                                            </div>
+                        <a href="#" onclick="ConfirmDelete(@item.Id)" data-toggle="modal" data-target="#add-contact" data-original-title="Delete"><i class="fa fa-close text-danger"></i></a>
 
-                                        }
-                                        </td>
-                                </tr>
-                            }
+                    </td>
+                </tr>
+}
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="7">
-                                    <div class="text-right">
-                                        <ul class="pagination"> </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tfoot>
+
                     </table>
+
+                    <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <h4 class="modal-title" id="myModalLabel">Add New Contact</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <from class="form-horizontal form-material">
+                                        <div class="form-group">
+                                            <label>Silmek istediğinizden emin misiniz?</label>
+                                        </div>
+                                    </from>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#" class="btn btn-default" data-dismiss="modal">İptal</a>
+                                    <a href="#" class="btn btn-success" onclick="DeleteCategory()">Sil</a>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+
+                    <input type="hidden" id="hiddenCategoryId" />
+
                 </div>
             </div>
         </div>
@@ -97,3 +93,34 @@
 </div>
 
 
+<script>
+
+    var ConfirmDelete = function (Id) {
+
+        $("#hiddenCategoryId").val(Id);
+        $("#add-contact").modal('show');
+
+    }
+
+    var DeleteCategory = function () {
+
+        $("#loaderDiv").show();
+
+        var empId = $("#hiddenCategoryId").val();
+
+        $.ajax({
+
+            type: "POST",
+            url: "/AdminCategory/DeleteCategory2",
+            data: { CategoryId: empId },
+            success: function (result) {
+                $("#loaderDiv").hide();
+                $("#add-contact").modal("hide");
+                $("#row_" + empId).remove();
+
+            }
+
+        })
+
+    }
+</script>
