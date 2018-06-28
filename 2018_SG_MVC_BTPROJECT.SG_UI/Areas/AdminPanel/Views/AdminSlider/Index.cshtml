@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/AdminLayout.cshtml";
+}
+
+@model  _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Models.AdminDTO.PageDTO.SliderListVM
+
+
+<div class="row el-element-overlay">
+    <div class="col-md-12">
+        <h4 class="card-title">GALERİ SAYFASI</h4>
+        @*<h6 class="card-subtitle m-b-20 text-muted">you can make gallery like this</h6>*@
+    </div>
+    @foreach (var item in Model.AllSliders)
+    {
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="el-card-item">
+                    <div class="el-card-avatar el-overlay-1">
+                        <img src="/Areas/AdminPanel/assets/images/big/img1.jpg" alt="user" />
+                        <div class="el-overlay">
+                            <ul class="el-info">
+                                <li><a class="btn default btn-outline image-popup-vertical-fit" href="/Areas/AdminPanel/assets/images/users/1.jpg"><i class="icon-magnifier"></i></a></li>
+                                <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li>
+
+                                <a href="/AdminPanel/AdminCategory/CategoryDetail/@item.Id" data-toggle="tooltip" data-original-title="Edit">
+                                    <i class="fa fa-pencil text-inverse m-r-10"></i>
+                                </a>
+                                 
+                                <a href="#" onclick="ConfirmDelete(@item.Id)" data-toggle="modal" data-target="#add-contact" data-original-title="Delete"><i class="fa fa-close text-danger"></i></a>
+
+
+
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="el-card-content">
+                        <h3 class="box-title">@item.Id</h3> <small></small>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

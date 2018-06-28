@@ -1,5 +1,6 @@
 ﻿using _2018_SG_MVC_BTPROJECT.Business.Abstract;
 using _2018_SG_MVC_BTPROJECT.Business.Concrete;
+using _2018_SG_MVC_BTPROJECT.Business.UnitOfWork;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -22,8 +23,11 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI.Infrastructure
 
         private void AddAllBindings()
         {
-            _ninjectKernel.Bind<ILoginService>().To<ILoginService>();
+            _ninjectKernel.Bind<IUnitOfWork>().To<UnitOfWork>();
+            _ninjectKernel.Bind<ILoginService>().To<LoginService>();
             _ninjectKernel.Bind<ICategoryService>().To<CategoryService>();
+            _ninjectKernel.Bind<ISliderService>().To<SliderService>();
+
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)

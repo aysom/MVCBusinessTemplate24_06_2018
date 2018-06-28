@@ -6266,9 +6266,11 @@
     <Compile Include="Areas\AdminPanel\Controllers\AdminCategoryController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\AdminLoginController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\AdminSliderController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\BaseController.cs" />
     <Compile Include="Areas\AdminPanel\Models\AdminDTO\BaseVM.cs" />
     <Compile Include="Areas\AdminPanel\Models\AdminDTO\CategoryVM.cs" />
+    <Compile Include="Areas\AdminPanel\Models\AdminDTO\PageDTO\SliderListVM.cs" />
     <Compile Include="Areas\AdminPanel\Models\AdminDTO\PictureVM.cs" />
     <Compile Include="Areas\AdminPanel\Models\AdminDTO\SiteInfoVM.cs" />
     <Compile Include="Areas\AdminPanel\Models\AdminDTO\SliderVM.cs" />
@@ -8522,7 +8524,9 @@
     <Content Include="Areas\AdminPanel\Views\AdminCategory\InsertCategory.cshtml" />
     <Content Include="Areas\AdminPanel\Views\AdminCategory\Index.cshtml" />
     <Content Include="Areas\AdminPanel\Views\AdminCategory\CategoryDetail.cshtml" />
-    <Content Include="Areas\AdminPanel\Views\AdminCategory\DeleteCategory.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminSlider\Partial\SliderForm.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminSlider\Index.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminSlider\InsertSlider.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -8541,6 +8545,7 @@
     <Folder Include="Models\" />
     <Folder Include="Upload\Category\LargePath\" />
     <Folder Include="Upload\Category\SmallPath\" />
+    <Folder Include="Upload\Slider\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\2018_SG_MVC_BTPROJECT.Business\2018_SG_MVC_BTPROJECT.Business.csproj">

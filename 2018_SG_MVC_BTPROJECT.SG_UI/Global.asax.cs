@@ -1,4 +1,5 @@
-﻿using _2018_SG_MVC_BTPROJECT.Business.Properties;
+﻿
+using _2018_SG_MVC_BTPROJECT.SG_UI.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;

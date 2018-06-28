@@ -7,6 +7,7 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Models.AdminDTO
 {
     public class SliderVM
     {
+        public int Id { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
 
