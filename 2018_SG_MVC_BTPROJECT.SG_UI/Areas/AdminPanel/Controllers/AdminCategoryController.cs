@@ -5,6 +5,7 @@ using _2018_SG_MVC_BTPROJECT.Entities;
 using _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Models.AdminDTO;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -79,7 +80,42 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Controllers
             gosterilen.CatImage = gelenCat.CatImage;
             return View(gosterilen);
         }
-        
+        string OrgimagePath = "~/Upload/Category/OrjPath";
+        string SmallimagePath = "~/Upload/Category/SmallPath";
+        string LargeimagePath = "~/Upload/Category/LargePath";
+         
+        [HttpPost]
+        public ActionResult CategoryDetail(CategoryVM modelCategory, HttpPostedFileBase resim)
+        {
+            //Category gelenCat = _CategoryService.getCategoryDetail(gelenCategory.Id);
+            Category gelenCat = _UnitOfWork.GetRepository<Category>().GetById(modelCategory.Id);
+
+            gelenCat.Id = gelenCat.Id;
+            gelenCat.Name = modelCategory.Name;
+            gelenCat.ServiceDescription = modelCategory.ServiceDescription;
+            gelenCat.TopCatId = modelCategory.TopCatId;
+             
+            if (resim == null && modelCategory.CatImage != "default.png")
+                gelenCat.CatImage = modelCategory.CatImage;
+            else if (resim == null)
+                gelenCat.CatImage = "default.png";
+            else
+            {
+                Image photoThumb = Image.FromStream(resim.InputStream, true, true);
+                ImageUploadService svc = ImageUploadService.CreateService(resim);
+                string uniqFileName = svc.CreateUniqName(resim.FileName, OrgimagePath);
+
+                svc.Upload(OrgimagePath, SmallimagePath, LargeimagePath, uniqFileName);
+                gelenCat.CatImage = uniqFileName;
+            }
+             
+            _UnitOfWork.GetRepository<Category>().Update(gelenCat);
+            _UnitOfWork.SaveChanges();
+            return RedirectToAction("Index", "AdminCategory");
+
+        }
+
+
         public ActionResult InsertCategory()
         {
             CategoryVM model = new CategoryVM(); 

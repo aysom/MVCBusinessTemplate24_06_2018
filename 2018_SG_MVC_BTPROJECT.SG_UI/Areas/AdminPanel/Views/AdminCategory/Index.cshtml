@@ -28,7 +28,7 @@
                             @foreach (var item in Model)
             {
                 <tr id="trrow_@item.Id">
-                    <td>row_@item.Id</td>
+                    <td>@item.Id</td>
 
                     <td>
                         <a href="javascript:void(0)">
@@ -45,17 +45,13 @@
 
                         @*<a href="/AdminPanel/AdminCategory/DeleteCategory/@item.Id" data-toggle="modal" data-target="#add-contact" data-original-title="Delete">
                 <i class="fa fa-close text-danger"></i>
-            </a>*@
-
-                        <a href="#" onclick="ConfirmDelete(@item.Id)" data-toggle="modal" data-target="#add-contact" data-original-title="Delete"><i class="fa fa-close text-danger"></i></a>
-
-                    </td>
+            </a>*@ 
+                     <a href="#" onclick="ConfirmDelete(@item.Id)" data-toggle="modal" data-target="#add-contact" data-original-title="Delete"><i class="fa fa-close text-danger"></i></a>
+              </td>
                 </tr>
 }
-                        </tbody>
-
-                    </table>
-
+                        </tbody> 
+                    </table> 
                     <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
