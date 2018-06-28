@@ -90,6 +90,16 @@ namespace _2018_SG_MVC_BTPROJECT.Business.Repository.EntityFramework
                int a = _context.SaveChanges();
                 return a; 
         }
+
+        public void Delete(object id)
+        {
+            TEntity entityToDelete = _context.Set<TEntity>().Find(id);
+            if (_context.Entry(entityToDelete).State == EntityState.Detached)
+            {
+                _context.Set<TEntity>().Attach(entityToDelete);
+            }
+            _context.Set<TEntity>().Remove(entityToDelete);
+        }
     }
 
 }

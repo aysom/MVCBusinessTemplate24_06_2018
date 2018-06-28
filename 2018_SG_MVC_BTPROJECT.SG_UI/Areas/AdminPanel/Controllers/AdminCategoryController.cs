@@ -165,12 +165,12 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Controllers
         public JsonResult DeleteCategory2(int CategoryId)
         {
             Category gelenCat = _CategoryService.getCategoryDetail(CategoryId);
-            bool result = false;
-   
-            _UnitOfWork.GetRepository<Category>().Delete(gelenCat);
+            bool result = false; 
+            _UnitOfWork.GetRepository<Category>().Delete(CategoryId);
             _UnitOfWork.SaveChanges();
             result = true;
             return Json(result, JsonRequestBehavior.AllowGet);
+          
         }
 
 
