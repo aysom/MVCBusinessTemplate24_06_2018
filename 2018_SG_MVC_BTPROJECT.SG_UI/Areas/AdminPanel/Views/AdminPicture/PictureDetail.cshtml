@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "PictureDetail";
+    Layout = "~/Areas/AdminPanel/Views/Shared/AdminLayout.cshtml";
+}
+
+@model  _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Models.AdminDTO.PictureVM
+
+<div class="white-box">
+    @*<h3 class="box-title">KATEGORİ DÜZENLE</h3>*@
+    @using (Html.BeginForm("PictureDetail", "AdminPicture", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.Partial("Partial/PictureForm")
+    }
+</div>

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "InsertPicture";
+    Layout = "~/Areas/AdminPanel/Views/Shared/AdminLayout.cshtml";
+}
+
+@model  _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Models.AdminDTO.PictureVM 
+
+@using (Html.BeginForm("InsertPicture", "AdminPicture", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    <div class="white-box">
+        @*<h3 class="box-title">KATEGORİ EKLE</h3>*@
+        @Html.Partial("Partial/PictureForm")
+    </div>
+}

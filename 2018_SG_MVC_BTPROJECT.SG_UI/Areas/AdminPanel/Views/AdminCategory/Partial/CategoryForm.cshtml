@@ -6,40 +6,45 @@
             <div class="card-body"> 
                 <form class="form-material m-t-40">
                     <div class="form-group">
-                        <label>KATEGORİ ADI</label>
+                        <label>KATEGORİ ADI</label><span class="text-danger">*</span>
                         @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Kategori Adını Yazınız..." })
+
+
+                        <div class="controls">
+                            @Html.ValidationMessageFor(x => x.Name)
+                        </div>
+
                     </div>
-                    <div class="form-group">
-                        <label>KATEGORİ</label>
-                        @Html.DropDownList("TopCatId", Model.drpcategories, "ANAMENU", new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        <label for="input-file-now">RESİM EKLE</label>
-                       
-                        @if (Model.CatImage == null)
-                        { 
-                            <input type="file" id="input-file-now-custom-1" class="dropify" name="resim" data-default-file="/Upload/Category/OrjPath/default.png" />
-                        }
-                        else
-                        {
+                        <div class="form-group">
+                            <label>KATEGORİ</label>
+                            @Html.DropDownList("TopCatId", Model.drpcategories, "ANAMENU", new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="input-file-now">RESİM EKLE</label>
+
+                            @*@if (Model.CatImage == null)
+            {
+                <input type="file" id="input-file-now-custom-1" class="dropify" name="resim" data-default-file="/Upload/Category/OrjPath/default.png" />
+            }
+            else
+            {*@
                             <input type="file" id="input-file-now-custom-1" class="dropify" name="resim" data-default-file="/Upload/Category/OrjPath/@Model.CatImage" />
+                            @*}*@
 
-                        }
-                         
-                    </div>
-                    <div class="form-group">
-                        <label>AÇIKLAMA</label>
-                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @placeholder = "AÇIKLAMA", @rows = "3" })
-                    </div>
-                    <div class="form-group">
-                        <label>HİZMET SAYFASI AÇIKALAMA</label>
-                        @Html.TextAreaFor(x => x.ServiceDescription, new { @class = "form-control", @placeholder = "AÇIKLAMA", @rows = "3" })
-                    </div> 
-                    <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">KAYDET</button>
-                    <button type="submit" class="btn btn-inverse waves-effect waves-light">İPTAL</button>
+                        </div>
+                        <div class="form-group">
+                            <label>AÇIKLAMA</label>
+                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @placeholder = "AÇIKLAMA", @rows = "3" })
+                        </div>
+                        <div class="form-group">
+                            <label>HİZMET SAYFASI AÇIKALAMA</label>
+                            @Html.TextAreaFor(x => x.ServiceDescription, new { @class = "form-control", @placeholder = "AÇIKLAMA", @rows = "3" })
+                        </div>
+                        <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">KAYDET</button>
+                        <button type="submit" class="btn btn-inverse waves-effect waves-light">İPTAL</button>
 
 
-                </form>
+</form>
             </div>
         </div>
 

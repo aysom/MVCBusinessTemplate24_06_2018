@@ -2,3 +2,38 @@
 @model  _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Models.AdminDTO.SliderVM
 
 
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form class="form-material m-t-40">
+                    <div class="form-group">
+                        <label>AÇIKLAMA</label>
+                        @Html.TextBoxFor(x => x.Description, new { @class = "form-control", @placeholder = "AÇIKLAMA Yazınız..." })
+                    </div> 
+                    <div class="form-group">
+                        <label for="input-file-now">RESİM EKLE</label>
+
+                        @if (Model.ImageUrl == null)
+        {
+                <input type="file" id="input-file-now-custom-1" class="dropify" name="resim" data-default-file="/Upload/Slider/OrjPath/default.png" />
+}
+else
+{
+                <input type="file" id="input-file-now-custom-1" class="dropify" name="resim" data-default-file="/Upload/Slider/OrjPath/@Model.ImageUrl" />
+
+
+}
+
+                    </div>
+                   
+                    <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">KAYDET</button>
+                    <button type="submit" class="btn btn-inverse waves-effect waves-light">İPTAL</button>
+
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -11,10 +11,9 @@ namespace _2018_SG_MVC_BTPROJECT.Entities
     {
         public int Id { get; set; }
         public string ImagePath { get; set; }
-        public int CatId { get; set; }
-
+        public int CatId { get; set; } 
         [ForeignKey("CatId")]
         public virtual Category Category { get; set; }
-        public int isShowHomePage { get; set; }
+        public int isShowHomePage { get; set; } 
     }
 }

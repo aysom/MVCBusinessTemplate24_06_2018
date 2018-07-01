@@ -23,8 +23,7 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            
-           
+             
 
             return View();
         }

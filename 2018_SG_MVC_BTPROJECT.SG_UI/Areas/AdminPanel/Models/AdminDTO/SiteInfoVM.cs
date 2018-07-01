@@ -8,7 +8,7 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Models.AdminDTO
     public class SiteInfoVM
     {
         private string _logo;
-
+        public int Id { get; set; }
         public string SiteUrl { get; set; }
         public string CompanyName { get; set; }
         public string SiteName { get; set; }

@@ -6258,6 +6258,13 @@
     <Content Include="Areas\AdminPanel\main\widget-data.html" />
     <Content Include="Global.asax" />
     <Content Include="Upload\Category\OrjPath\default.png" />
+    <Content Include="Upload\Category\OrjPath\noresim.png" />
+    <Content Include="Upload\Logo\OrjPath\default.png" />
+    <Content Include="Upload\Picture\OrjPath\default.png" />
+    <Content Include="Upload\Picture\OrjPath\784fff1d76b64a958e28b370d35b976e_fikir.jpg" />
+    <Content Include="Upload\Picture\OrjPath\noresim.png" />
+    <Content Include="Upload\Slider\OrjPath\default.png" />
+    <Content Include="Upload\Slider\OrjPath\noresim.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -6266,10 +6273,13 @@
     <Compile Include="Areas\AdminPanel\Controllers\AdminCategoryController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\AdminLoginController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\AdminPictureController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\AdminSiteInfoController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\AdminSliderController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\BaseController.cs" />
     <Compile Include="Areas\AdminPanel\Models\AdminDTO\BaseVM.cs" />
     <Compile Include="Areas\AdminPanel\Models\AdminDTO\CategoryVM.cs" />
+    <Compile Include="Areas\AdminPanel\Models\AdminDTO\PageDTO\PictureListVM.cs" />
     <Compile Include="Areas\AdminPanel\Models\AdminDTO\PageDTO\SliderListVM.cs" />
     <Compile Include="Areas\AdminPanel\Models\AdminDTO\PictureVM.cs" />
     <Compile Include="Areas\AdminPanel\Models\AdminDTO\SiteInfoVM.cs" />
@@ -8526,7 +8536,14 @@
     <Content Include="Areas\AdminPanel\Views\AdminCategory\CategoryDetail.cshtml" />
     <Content Include="Areas\AdminPanel\Views\AdminSlider\Partial\SliderForm.cshtml" />
     <Content Include="Areas\AdminPanel\Views\AdminSlider\Index.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminSlider\SliderDetail.cshtml" />
     <Content Include="Areas\AdminPanel\Views\AdminSlider\InsertSlider.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminSiteInfo\Index.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminSiteInfo\EditSiteInfo.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminPicture\Index.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminPicture\Partial\PictureForm.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminPicture\InsertPicture.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\AdminPicture\PictureDetail.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -8545,7 +8562,12 @@
     <Folder Include="Models\" />
     <Folder Include="Upload\Category\LargePath\" />
     <Folder Include="Upload\Category\SmallPath\" />
-    <Folder Include="Upload\Slider\" />
+    <Folder Include="Upload\Logo\LargePath\" />
+    <Folder Include="Upload\Logo\SmallPath\" />
+    <Folder Include="Upload\Picture\LargePath\" />
+    <Folder Include="Upload\Picture\SmallPath\" />
+    <Folder Include="Upload\Slider\LargePath\" />
+    <Folder Include="Upload\Slider\SmallPath\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\2018_SG_MVC_BTPROJECT.Business\2018_SG_MVC_BTPROJECT.Business.csproj">

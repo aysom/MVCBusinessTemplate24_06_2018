@@ -14,35 +14,96 @@
     </div>
     @foreach (var item in Model.AllSliders)
     {
-        <div class="col-lg-3 col-md-6">
-            <div class="card">
-                <div class="el-card-item">
-                    <div class="el-card-avatar el-overlay-1">
-                        <img src="/Areas/AdminPanel/assets/images/big/img1.jpg" alt="user" />
-                        <div class="el-overlay">
-                            <ul class="el-info">
-                                <li><a class="btn default btn-outline image-popup-vertical-fit" href="/Areas/AdminPanel/assets/images/users/1.jpg"><i class="icon-magnifier"></i></a></li>
-                                <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li>
+           
+                <div class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="el-card-item">
+                            <div class="el-card-avatar el-overlay-1">
+                                <img src="/Upload/Slider/OrjPath/@item.ImageUrl" alt="user" />
+                                <div class="el-overlay">
+                                    <ul class="el-info">
+                                        <li>
+                                            <a class="btn default btn-outline image-popup-vertical-fit"
+                                               href="/AdminPanel/AdminSlider/SliderDetail/@item.Id"
+                                               src="/Areas/AdminPanel/assets/images/users/1.jpg">
+                                                <i class="icon-magnifier"></i>
+                                            </a>
 
-                                <a href="/AdminPanel/AdminCategory/CategoryDetail/@item.Id" data-toggle="tooltip" data-original-title="Edit">
-                                    <i class="fa fa-pencil text-inverse m-r-10"></i>
-                                </a>
-                                 
-                                <a href="#" onclick="ConfirmDelete(@item.Id)" data-toggle="modal" data-target="#add-contact" data-original-title="Delete"><i class="fa fa-close text-danger"></i></a>
-
-
-
-
-                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="btn default btn-outline" href="#"
+                                               onclick="ConfirmDelete(@item.Id)" data-toggle="modal"
+                                               data-target="#add-contact" data-original-title="Delete">
+                                                <i class="fa fa-close text-danger"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="el-card-content">
+                                <h3 class="box-title">@item.Description</h3> <small></small>
+                                <br />
+                            </div>
                         </div>
                     </div>
-                    <div class="el-card-content">
-                        <h3 class="box-title">@item.Id</h3> <small></small>
-                        <br />
-                    </div>
                 </div>
-            </div>
-        </div>
+
+                <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="myModalLabel">SLİDER SİL</h4>
+                            </div>
+                            <div class="modal-body">
+                                <from class="form-horizontal form-material">
+                                    <div class="form-group">
+                                        <label>Silmek istediğinizden emin misiniz?</label>
+                                    </div>
+                                </from>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#" class="btn btn-default" data-dismiss="modal">İptal</a>
+                                <a href="#" class="btn btn-success" onclick="DeleteSlider()">Sil</a>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <input type="hidden" id="hiddenSliderId" />
+           
+    } 
+</div>  
+<script>
+
+    var ConfirmDelete = function (Id) {
+
+        $("#hiddenSliderId").val(Id);
+        $("#add-contact").modal('show');
+
     }
 
-</div>
+    var DeleteSlider = function () {
+
+        var sid = $("#hiddenSliderId").val();
+
+        $.ajax({
+            type: "POST",
+            url: "/AdminSlider/DeleteSlider",
+            data: { SliderId: sid },
+            success: function (result) { 
+                $("#add-contact").modal("hide");
+                $("#divul_" + sid).css("display", "none");
+                 
+            },
+            error: function (response) {
+                
+                alert(response.responseText);
+                alert("Kayıt Silinemedi...");
+            }
+
+        })
+
+    }
+</script>

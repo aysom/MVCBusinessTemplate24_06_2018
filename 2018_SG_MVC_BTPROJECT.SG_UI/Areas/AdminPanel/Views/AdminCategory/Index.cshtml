@@ -46,7 +46,8 @@
                         @*<a href="/AdminPanel/AdminCategory/DeleteCategory/@item.Id" data-toggle="modal" data-target="#add-contact" data-original-title="Delete">
                 <i class="fa fa-close text-danger"></i>
             </a>*@ 
-                     <a href="#" onclick="ConfirmDelete(@item.Id)" data-toggle="modal" data-target="#add-contact" data-original-title="Delete"><i class="fa fa-close text-danger"></i></a>
+                     <a href="#" onclick="ConfirmDelete(@item.Id)" data-toggle="modal" data-target="#add-contact" data-original-title="Delete">
+                        <i class="fa fa-close text-danger"></i></a>
               </td>
                 </tr>
 }
@@ -105,7 +106,7 @@
         $.ajax({ 
             type: "POST",
             url: "/AdminCategory/DeleteCategory2",
-            data: { CategoryId: empId },
+            data: { CategoryId: categoriId },
             success: function (result) {
                 $("#add-contact").modal("hide");
                 $("#trrow_" + categoriId).remove();

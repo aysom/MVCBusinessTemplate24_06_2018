@@ -1,1 +1,17 @@
 ﻿
+@{
+    ViewBag.Title = "InsertSlider";
+    Layout = "~/Areas/AdminPanel/Views/Shared/AdminLayout.cshtml";
+}
+
+@model  _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Models.AdminDTO.SliderVM
+
+
+
+@using (Html.BeginForm("InsertSlider", "AdminSlider", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    <div class="white-box">
+        @*<h3 class="box-title">KATEGORİ EKLE</h3>*@
+        @Html.Partial("Partial/SliderForm")
+    </div>
+}

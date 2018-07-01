@@ -22,5 +22,6 @@ namespace _2018_SG_MVC_BTPROJECT.Business.Abstract
         //AdminPanelde İndex
         //List<Category> getAllCategoriesWithMainCategoryName();
         Boolean GetByIdBool(int id);
+        int CountOfActiveCategory();
     }
 }

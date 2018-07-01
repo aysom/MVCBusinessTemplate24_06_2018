@@ -27,13 +27,14 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI.Infrastructure
             _ninjectKernel.Bind<ILoginService>().To<LoginService>();
             _ninjectKernel.Bind<ICategoryService>().To<CategoryService>();
             _ninjectKernel.Bind<ISliderService>().To<SliderService>();
-
+            _ninjectKernel.Bind<ISiteInfoService>().To<SiteInfoService>();
+            _ninjectKernel.Bind<IPictureService>().To<PictureService>();
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
         {
             return controllerType == null ? null : (IController)
-                 _ninjectKernel.Get(controllerType);
+               _ninjectKernel.Get(controllerType);
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -15,12 +16,12 @@ namespace _2018_SG_MVC_BTPROJECT.SG_UI.Areas.AdminPanel.Models.AdminDTO
             get { return _IsDeleted; }
             set { _IsDeleted = value; }
         }
-
+        [DataType(DataType.Date)]
         private DateTime? _CreatedDate = DateTime.Now;
         public DateTime? CreatedDate
         {
             get { return _CreatedDate; }
-            set { _CreatedDate = value; }
+            set { _CreatedDate = DateTime.UtcNow; }
         }
     }
 }

@@ -50,7 +50,8 @@ namespace _2018_SG_MVC_BTPROJECT.Business.Concrete
 
         public List<Category> getMainCategories()
         {
-            throw new NotImplementedException();
+            var a = _uow.GetRepository<Category>().Where(c => c.TopCatId == 0).ToList();
+            return a;
         }
 
         public Category getMainCategory(int id)
@@ -69,6 +70,12 @@ namespace _2018_SG_MVC_BTPROJECT.Business.Concrete
                 return false;
             }
 
+        }
+
+        public int CountOfActiveCategory()
+        {
+            int a = _uow.GetRepository<Category>().Where(c => c.TopCatId == 0).Count;
+            return a;
         }
 
         //public List<Category> getSubCategoriesById(int mainCatid)
